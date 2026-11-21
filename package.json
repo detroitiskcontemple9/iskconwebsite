@@ -9,7 +9,7 @@
     "mirror": "bash scripts/mirror.sh",
     "clean-mirror": "node scripts/clean-mirror.mjs",
     "preview": "npx --yes serve@14.2.4 out",
-    "deploy": "wrangler pages deploy out --project-name iskcon-detroit --branch main"
+    "deploy": "CLOUDFLARE_ACCOUNT_ID=bad928490204e02c1a4c1e0ec1be6e2d wrangler pages deploy out --project-name iskcon-detroit --branch main"
   },
   "dependencies": {
     "next": "15.5.29",

@@ -62,10 +62,10 @@ Deploys go to the temple Cloudflare account as the Pages project `iskcon-detroit
 The live domain and DNS are not touched.
 
 ```bash
-npm run build && CLOUDFLARE_API_TOKEN=... CLOUDFLARE_ACCOUNT_ID=... npm run deploy
+npm run build && CLOUDFLARE_API_TOKEN=... npm run deploy
 ```
 
-The first deploy creates the project. Token: Cloudflare dashboard → My Profile → API Tokens → Create Token → Custom
+The temple account ID is already in the `deploy` script in `package.json`. The first deploy creates the project. Token: Cloudflare dashboard → My Profile → API Tokens → Create Token → Custom
 token, with one permission: Account → Cloudflare Pages → Edit.
 
 ## How it fits together
