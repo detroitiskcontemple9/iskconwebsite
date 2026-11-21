@@ -1,0 +1,40 @@
+# Build the site and deploy it to the Cloudflare Pages test address (https://iskcon-detroit.pages.dev)
+# on every push to the working branch, or by hand from the Actions tab ("Run workflow").
+# This never touches iskcondetroit.com, Bluehost, DNS or email.
+#
+# Needs one repository secret: CLOUDFLARE_API_TOKEN (Cloudflare → My Profile → API Tokens →
+# Custom token with only Account → Cloudflare Pages → Edit). The account ID is in package.json.
+
+name: Deploy to Cloudflare Pages (test address)
+
+on:
+  push:
+    branches: [claude/zealous-maxwell-lahohb]
+  workflow_dispatch:
+
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+
+      - name: Deploy to iskcon-detroit.pages.dev
+        run: npm run deploy
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

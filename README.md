@@ -65,6 +65,10 @@ The live domain and DNS are not touched.
 npm run build && CLOUDFLARE_API_TOKEN=... npm run deploy
 ```
 
+**Automatic:** `.github/workflows/deploy.yml` builds and deploys on every push to `claude/zealous-maxwell-lahohb`
+(or by hand: GitHub → Actions → Deploy → Run workflow). It needs the repository secret `CLOUDFLARE_API_TOKEN`
+(GitHub → Settings → Secrets and variables → Actions).
+
 The temple account ID is already in the `deploy` script in `package.json`. The first deploy creates the project. Token: Cloudflare dashboard → My Profile → API Tokens → Create Token → Custom
 token, with one permission: Account → Cloudflare Pages → Edit.
 
