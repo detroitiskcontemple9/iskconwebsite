@@ -1,0 +1,23 @@
+{
+  "name": "iskcon-detroit-website",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "postbuild": "node scripts/postbuild.mjs",
+    "mirror": "bash scripts/mirror.sh",
+    "clean-mirror": "node scripts/clean-mirror.mjs",
+    "preview": "npx --yes serve@14.2.4 out",
+    "deploy": "wrangler pages deploy out --project-name iskcon-detroit --branch main"
+  },
+  "dependencies": {
+    "next": "15.5.29",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  },
+  "devDependencies": {
+    "parse5": "7.3.0",
+    "wrangler": "4.40.0"
+  }
+}
